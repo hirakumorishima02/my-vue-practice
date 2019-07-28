@@ -16,8 +16,12 @@ const router = new VueRouter({
     routes: [
         { path: '/', component: Home},
         { path: '/product', component: ProductList},
-        // { path: '/product/:id', component: Product}, :idとしておけばパラメータに可変の値を入れられる
-        { path: '/product/:id(\\d+)', component: Product}, //(\\d+)を付ければパラメータには数字しか入らない正規表現となる
+        
+        
+        { path: '/product/:id(\\d+)', 
+        component: Product,
+        // propsにidとデータ型の指定をする
+        props: route => ({ id: Number(route.params.id) })}, 
         ]
 })
 
